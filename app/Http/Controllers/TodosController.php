@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
-use App\Helper\Helper;
-
 
 class TodosController extends Controller
 {
@@ -31,6 +29,11 @@ class TodosController extends Controller
     }
 
     public function store() {
+        $this->validate(request(), [
+            'name' => 'required|min:6|max:12',
+            'description' => 'required'
+        ]);
+
         $data = request()->all();
 
         $todo = new Todo();
