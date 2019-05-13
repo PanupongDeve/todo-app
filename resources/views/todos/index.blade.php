@@ -21,7 +21,14 @@
                     <li class="list-group-item">
                         {{ $todo->name }}
 
-                    <a href="/todos/{{ $todo->name }}" class="btn btn-primary btn-xs float-right">View</a>
+                        @if (!$todo->completed)
+
+                            <a href="/todos/{{ $todo->id }}/complete" style="color:white;" class="btn btn-warning btn-xs float-right">Complete</a>
+                            
+                        @endif
+
+                        <a href="/todos/{{ $todo->name }}" class="btn btn-primary btn-xs float-right mr-2">View</a>
+                        
                     </li>
 
                     

@@ -83,4 +83,15 @@ class TodosController extends Controller
         return redirect('/todos');
     }
 
+    public function complete($todoId) {
+        $todo = Todo::find($todoId);
+
+        $todo->completed = true;
+
+        $todo->save();
+
+        session()->flash('success', 'Todo completed successfully.');
+
+        return redirect('/todos');
+    }
 }
